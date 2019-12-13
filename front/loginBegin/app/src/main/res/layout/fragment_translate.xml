@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <EditText
+        android:id="@+id/translateBlock"
+        android:layout_width="fill_parent"
+        android:layout_height="80dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginLeft="35dp"
+        android:layout_marginTop="80dp"
+        android:layout_marginRight="35dp"
+        android:width="300dp"
+        android:height="200dp"
+        android:hint="..."
+        android:background="@drawable/default_bg"/>
+
+    <Button
+        android:id="@+id/btn_text_translate"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginLeft="35dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginRight="35dp"
+        android:text="Translate"
+        android:textColor="@android:color/white"
+        android:background="@drawable/register_selector"
+        android:textSize="18sp"/>
+
+    <TextView
+        android:id="@+id/tv_translate_result"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginLeft="35dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginRight="35dp"
+        android:textColor="@android:color/white"
+        android:background="@drawable/default_bg"
+        android:textSize="18sp"/>
+
+</LinearLayout>

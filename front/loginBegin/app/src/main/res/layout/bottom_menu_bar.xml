@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/bottom_menu_bar"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@android:color/transparent"
+    android:orientation="horizontal">
+
+    <LinearLayout
+        android:id="@+id/tab_menu"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:orientation="horizontal"
+        android:background="@drawable/default_bg"
+        android:layout_alignParentBottom="true">
+
+        <RelativeLayout
+            android:layout_weight="1"
+            android:id="@+id/bottom_bar_translate_btn"
+            android:layout_width="0dp"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/txt_translate"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_centerHorizontal="true"
+                android:layout_marginBottom="3dp"
+                android:gravity="center"
+                android:singleLine="true"
+                android:text="Trans"
+                android:textColor="@drawable/tab_menu_translate_text"
+                android:textSize="14sp"/>
+            <ImageView
+                android:layout_width="27dp"
+                android:layout_height="27dp"
+                android:layout_above="@+id/txt_translate"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="3dp"
+                android:id="@+id/image_translate"
+                android:src="@drawable/tab_menu_translate"/>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/bottom_bar_home_btn"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="match_parent">
+            <TextView
+                android:id="@+id/txt_home"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_centerHorizontal="true"
+                android:layout_marginBottom="3dp"
+                android:gravity="center"
+                android:singleLine="true"
+                android:text="Home"
+                android:textColor="@drawable/tab_menu_home_text"
+                android:textSize="14sp"/>
+            <ImageView
+                android:layout_width="27dp"
+                android:layout_height="27dp"
+                android:layout_above="@+id/txt_home"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="3dp"
+                android:id="@+id/image_home"
+                android:src="@drawable/tab_menu_home"/>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_weight="1"
+            android:id="@+id/bottom_bar_user_btn"
+            android:layout_width="0dp"
+            android:layout_height="match_parent">
+            <TextView
+                android:id="@+id/txt_user"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_centerHorizontal="true"
+                android:layout_marginBottom="3dp"
+                android:gravity="center"
+                android:singleLine="true"
+                android:text="Me"
+                android:textColor="@drawable/tab_menu_user_text"
+                android:textSize="14sp"/>
+            <ImageView
+                android:layout_width="27dp"
+                android:layout_height="27dp"
+                android:layout_above="@+id/txt_user"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="3dp"
+                android:id="@+id/image_user"
+                android:src="@drawable/tab_menu_user"/>
+        </RelativeLayout>
+
+
+        <!--        -->
+<!--        <TextView-->
+<!--            android:id="@+id/txt_translate"-->
+<!--            android:layout_width="0dp"-->
+<!--            android:layout_height="match_parent"-->
+<!--            android:paddingTop="5dp"-->
+<!--            android:paddingBottom="5dp"-->
+<!--            android:background="@drawable/tab_menu_bg"-->
+<!--            android:layout_weight="1"-->
+<!--            android:drawablePadding="1dp"-->
+<!--            android:drawableTop="@drawable/tab_menu_translate"-->
+<!--            android:gravity="center"-->
+<!--            android:textColor="@drawable/tab_menu_translate_text"-->
+<!--            android:text="Trans"/>-->
+
+<!--        <TextView-->
+<!--            android:id="@+id/txt_home"-->
+<!--            android:layout_width="0dp"-->
+<!--            android:layout_height="match_parent"-->
+<!--            android:paddingTop="5dp"-->
+<!--            android:paddingBottom="5dp"-->
+<!--            android:background="@drawable/tab_menu_bg"-->
+<!--            android:layout_weight="1"-->
+<!--            android:drawablePadding="1dp"-->
+<!--            android:drawableTop="@drawable/tab_menu_home"-->
+<!--            android:gravity="center"-->
+<!--            android:textColor="@drawable/tab_menu_home_text"-->
+<!--            android:text="Home"/>-->
+
+<!--        <TextView-->
+<!--            android:id="@+id/txt_user"-->
+<!--            android:layout_width="0dp"-->
+<!--            android:layout_height="match_parent"-->
+<!--            android:paddingTop="5dp"-->
+<!--            android:paddingBottom="5dp"-->
+<!--            android:background="@drawable/tab_menu_bg"-->
+<!--            android:layout_weight="1"-->
+<!--            android:drawablePadding="1dp"-->
+<!--            android:drawableTop="@drawable/tab_menu_user"-->
+<!--            android:gravity="center"-->
+<!--            android:textColor="@drawable/tab_menu_user_text"-->
+<!--            android:text="User"/>-->
+
+    </LinearLayout>
+
+</RelativeLayout>
