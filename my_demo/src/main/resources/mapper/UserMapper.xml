@@ -1,0 +1,160 @@
+<?xml version = "1.0" encoding = "UTF-8"?>
+<!DOCTYPE mapper PUBLIC
+        "-//mybatis.org//DTD com.example.Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.mapper.UserMapper">
+    <resultMap id="result" type="com.example.demo.entity.User">
+        <result property="name" column="name" />
+        <result property="password" column="password" />
+        <result property="number" column="number"/>
+
+    </resultMap>
+
+    <resultMap id="bag" type="com.example.demo.entity.Cardbag_user">
+        <result property="cardbag_id" column="cardbag_id" />
+        <result property="card_describe" column="card_describe"/>
+        <result property="user_name" column="user_name" />
+    </resultMap>
+
+    <resultMap id="describe_name" type="com.example.demo.entity.Describe_name">
+        <result property="body" column="name" />
+        <result property="body" column="card_describe" />
+    </resultMap>
+
+    <resultMap id="card" type="com.example.demo.entity.Card">
+        <result property="id" column="id" />
+        <result property="name" column="name"/>
+        <result property="discribe" column="discribe" />
+        <result property="stars" column="stars" />
+    </resultMap>
+
+    <select id="ListBagWithoutCard" resultMap="bag">
+      SELECT distinct * FROM cardbag_user where user_name=#{user_name} and cardbag_id not in
+      (SELECT cardbag_id FROM cardbag_card,card where name=#{card_name} and user_name=#{user_name} and id=card_id)
+   </select>
+
+    <select id="findCardByname" resultMap="card">
+      SELECT * from card where name=#{name}
+   </select>
+
+    <select id="ListBagDescribe" resultMap="describe_name">
+   SELECT card_describe from cardbag_user where user_name=#{user_name} and cardbag_id=#{cardbag_id}
+   </select>
+
+    <select id="ListCardname" resultMap="describe_name">
+   SELECT name FROM cardbag_card,card where card_id=id and user_name=#{user_name} and cardbag_id=#{cardbag_id}
+   </select>
+
+    <select id="findCardByword" resultMap="card">
+      (SELECT * from card where name like CONCAT('%',#{word},'%'))
+      UNION
+      (SELECT * from card where discribe like CONCAT('%',#{word},'%'))
+   </select>
+
+    <select id="ListCardByBag" resultMap="card">
+      SELECT id,name,discribe,stars FROM cardbag_card,card where card_id=id and user_name=#{user_name} and cardbag_id=#{cardbag_id}
+   </select>
+
+
+
+    <select id="findBagByName" resultMap="bag">
+      SELECT * FROM cardbag_user where user_name=#{name}
+   </select>
+
+    <select id="ListBag" resultMap="bag">
+      SELECT * FROM cardbag_user
+   </select>
+
+
+    <select id="ListUser" resultMap="result">
+      select * from account
+   </select>
+
+    <select id="findUserByName" resultMap="result">
+      SELECT * FROM account where name=#{name}
+   </select>
+
+    <insert id="insertUser" parameterType="com.example.demo.entity.User"
+            keyProperty="id" useGeneratedKeys="true">
+      INSERT IGNORE INTO account
+      (
+      id,name,password,sex,discribe
+      )
+      VALUES (
+      #{id, jdbcType=VARCHAR},
+      #{name, jdbcType=VARCHAR},
+      #{password, jdbcType=VARCHAR},
+      #{sex},
+      #{discribe}
+      )
+   </insert>
+
+    <insert id="insertCard2bag" parameterType="com.example.demo.entity.Cardbag_card"
+            useGeneratedKeys="true">
+      INSERT IGNORE INTO cardbag_card
+      (
+      user_name,cardbag_id,card_id
+      )
+      VALUES (
+      #{user_name, jdbcType=VARCHAR},
+      #{cardbag_id, jdbcType=VARCHAR},
+      #{card_id, jdbcType=INTEGER}
+      )
+   </insert>
+
+    <insert id="insertCard2bagName" parameterType="com.example.demo.entity.Cardbag_cardname"
+            useGeneratedKeys="true">
+      INSERT IGNORE INTO cardbag_card
+      (
+      user_name,cardbag_id,card_id
+      )
+      VALUES (
+      #{user_name, jdbcType=VARCHAR},
+      #{cardbag_id, jdbcType=VARCHAR},
+      (select id from card where name=#{name})
+      )
+   </insert>
+
+    <insert id="insertBag" parameterType="com.example.demo.entity.Cardbag_user"
+            useGeneratedKeys="true">
+      INSERT IGNORE INTO cardbag_user
+      (
+      user_name,cardbag_id,card_describe
+      )
+      VALUES (
+      #{user_name, jdbcType=VARCHAR},
+      #{cardbag_id, jdbcType=VARCHAR},
+      #{card_describe, jdbcType=VARCHAR}
+      )
+   </insert>
+
+    <insert id="insertCard" parameterType="com.example.demo.entity.Card"
+            keyProperty="id" useGeneratedKeys="true">
+      INSERT IGNORE INTO Card
+      (
+      id,name,discribe,stars
+      )
+      VALUES (
+      #{id, jdbcType=INTEGER},
+      #{name, jdbcType=VARCHAR},
+      #{discribe, jdbcType=VARCHAR},
+      #{stars,jdbcType=INTEGER}
+      )
+   </insert>
+
+    <delete id="delete" parameterType="String">
+      delete from account where id=#{id}
+   </delete>
+
+    <delete id="deleteBag_user" parameterType="com.example.demo.entity.Cardbag_user">
+      delete from cardbag_user where user_name=#{user_name} and cardbag_id=#{cardbag_id}
+   </delete>
+    <delete id="deleteBag_card" parameterType="com.example.demo.entity.Cardbag_user">
+     delete from cardbag_card where user_name=#{user_name} and cardbag_id=#{cardbag_id}
+   </delete>
+
+
+    <update id="Update" parameterType="com.example.demo.entity.User">
+   update account set account.name=#{name},account.password=#{password} where account.id=#{id}
+   </update>
+</mapper>
